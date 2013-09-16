@@ -10,3 +10,5 @@ Update this page to describe and link to pull requests made against other Netfli
 * https://github.com/Netflix/Priam/pull/272
 * https://github.com/Netflix/edda/pull/42
 * https://github.com/Netflix/Turbine/pull/26
+* (Entire repository) https://github.com/aminator-plugins/eucalyptus-cloud
+* (Entire repository) https://github.com/eucaflix/asgard/tree/eucalyptus
