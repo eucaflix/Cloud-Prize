@@ -9,7 +9,7 @@ these changes generally involve abstraction of hardcoded AWS-isms.
 Eucalyptus is an open source software project that allows users to build private clouds that are compatible with the
 Amazon Web Services API.
 
-Because Eucalyptus faithfully reproduces the AWS APIs upon which NetflixOSS depends, it should be noted that most 
+Because Eucalyptus faithfully implements the AWS APIs upon which NetflixOSS depends, it should be noted that most 
 NetflixOSS projects can be expected to run on Eucalyptus clouds _with no changes at all_.
 
 There are, however, a handful NetflixOSS projects that must be modified in order to work with the latest version of
