@@ -19,6 +19,7 @@ as noted below.
 ### Netflix OSS Projects now supported under Eucalyptus with these patches
 
 * eureka: _Full support_.
+* exhibitor: _Full support_.
 * Priam: _Full support_.
 * servo: _Full support_.
 * Turbine: _Full support_.
