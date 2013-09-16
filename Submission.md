@@ -1,24 +1,28 @@
 ## Which Categories Best Fit Your Submission and Why?
 __Portability Enhancement__.  The majority of our changes to the NetflixOSS codebase involve tweaks to enable the projects
-to run seamlessly against both AWS and Eucalyptus.  Since Eucalyptus is designed to be highly compatible with the AWS API, these changes generally involve abstraction of hardcoded AWS-isms.
+to run seamlessly against both AWS and Eucalyptus.  Since Eucalyptus is designed to be highly compatible with the AWS API, 
+these changes generally involve abstraction of hardcoded AWS-isms.  
 
 ## Describe your Submission
 
-Our submission touches multiple NetflixOSS projects.  Different projects have different degrees of integration.  For each
-NetflixOSS project, we indicate the degree of Eucalyptus integration provided by our submissions as follows:
+Because Eucalyptus faithfully reproduces the Amazon Web Services APIs upon which NetflixOSS depends, it should be
+noted that most NetflixOSS projects can be expected to work with Eucalyptus _with no changes at all_.
 
-### Supported Netflix OSS Projects
+There are, however, a handful NetflixOSS projects that must be modified in order to work with Eucalyptus.  Our 
+submission focuses on providing portability for these projects, as noted below.
 
-* eureka: _Full_.
-* Priam: _Full_.
-* servo: _Full_.
-* Turbine: _Full_.
-* archaius: _Partial_. No DynamoDB support in Eucalyptus at present.  Other configurations work.
-* asgard: _Partial_. No RDS or SQS support in Eucalyptus at present. 
-* edda: _Partial_. No ElasticCache, RDS, Route53, or SQS support in Eucalyptus at present.
-* SimianArmy: _Partial_. No SimpleDB support in Eucalyptus at present.
+### Netflix OSS Projects now supported under Eucalyptus with these patches
 
-### Not supported 
+* eureka: _Full support_.
+* Priam: _Full support_.
+* servo: _Full support_.
+* Turbine: _Full support_.
+* archaius: _Partial support_. No DynamoDB support in Eucalyptus at present.  Other configurations work.
+* asgard: _Partial support_. No RDS or SQS support in Eucalyptus at present. 
+* edda: _Partial support_. No ElasticCache, RDS, Route53, or SQS support in Eucalyptus at present.
+* SimianArmy: _Partial support_. No SimpleDB support in Eucalyptus at present.
+
+### Not supported at all under Eucalyptus
 
 * denominator: _Not supported_. No Route53 support in Eucalyptus at present.
 * ice: _Not supported_. No Programmatic Billing Access, SES, or SimpleDB in Eucalyptus at present.
