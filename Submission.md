@@ -24,7 +24,7 @@ as noted below.
 * servo: _Full support_.
 * Turbine: _Full support_.
 * archaius: _Partial support_. No DynamoDB support in Eucalyptus at present.  Other configurations work.
-* asgard: _Partial support_. No RDS or SQS support in Eucalyptus at present. 
+* asgard: _Partial support_. No SimpleDB, SWF, RDS or SQS support in Eucalyptus at present. 
 * edda: _Partial support_. No ElasticCache, RDS, Route53, or SQS support in Eucalyptus at present.
 * SimianArmy: _Partial support_. No SimpleDB support in Eucalyptus at present.
 
@@ -74,7 +74,12 @@ Adds support for Eucalyptus endpoints:
 
 __asgard__
 
-FIXME
+Branch with Asgard working against Eucalyptus:
+* Support for configuring both AWS and Eucalyptus accounts.
+* EC2, AutoScaling, ELB, and CloudWatch functionality work unmolested against Eucalytpus.
+* Allows for configuring services not supported by Eucalyptus to use either AWS or the Mock backends.
+* Currently requires a change in Region.groovy to configure the names of Eucalyptus regions.
+* Adds EndpointService for configuring AWS client endpoints based on Region
 
 __edda__
 
