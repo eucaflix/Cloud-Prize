@@ -9,3 +9,4 @@ Update this page to describe and link to pull requests made against other Netfli
 * https://github.com/Netflix/servo/pull/189
 * https://github.com/Netflix/Priam/pull/272
 * https://github.com/Netflix/edda/pull/42
+* https://github.com/Netflix/Turbine/pull/26
