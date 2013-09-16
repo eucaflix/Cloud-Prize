@@ -1,103 +1,104 @@
-Edit this page to describe your Submission.
-
 ## Which Categories Best Fit Your Submission and Why?
-Portability Enhancement
+
+__*Portability Enhancement*__.  The majority of our changes to the NetflixOSS codebase involve tweaks to enable the projects
+to run seamlessly against both AWS and Eucalyptus.  Since Eucalyptus is designed to be highly compatible with the AWS API, 
+these changes generally involve abstraction of hardcoded AWS-isms.  
 
 ## Describe your Submission
 
-### Categories of "supported" projects
-* Not supported:  Eucalyptus is currently missing implementations of essential AWS services to support the project.
-* Transitive:  The project has no AWS dependencies, but depends upon other Netflix OSS projects/services and, so, is transitively supported by virtue of other contributions in this submission.
-* Partial:  For projects which provide faceted functionality (e.g., edda's monitoring of resources) partial support means that some portion of the functionality requires services which are not supported by Eucalyptus.
-* Full:  All of the functionality from a particular project works in Eucalyptus.
-* Hybrid:  The project can be configured to use both AWS and Eucalyptus clouds at the same time.  This implies also that the project can be configured to only use Eucalyptus, too.
+Eucalyptus is an open source software project that allows users to build private clouds that are compatible with the
+Amazon Web Services API.
 
-### Support Netflix OSS Projects
-* archaius: No DynamoDB support, other configurations works.
-* asgard: Partially supported (no RDS, SQS)
-* astyanax: No AWS dependencies
-* blitz4j: No AWS dependencies
-* brutal: No AWS dependencies
-* CassJMeter
-* Cloud-Prize
-* curator
-* denominator: Not supported (no Route53)
-* edda: Partially supported (no ElasticCache, RDS, Route53, SQS)
-* eureka: Fully supported
-* EVCache:
-* exhibitor: ????
-* feign
-* frigga
-* gcviz
-* genie
-* governator
-* gradle-template
-* Hystrix
-* ice: Not supported (no Programmatic Billing Access, SES, SimpleDB)
-* karyon: Transitive
-* Lipstick: Transitive
-* netflix-commons
-* netflix-graph
-* NfWebCrypto
-* Priam: Fully supported
-* pytheas
-* recipes-rss: Transitive
-* ribbon: Transitive
-* RxJava
-* servo: Fully supported
-* SimianArmy: Partially supported (no SimpleDB)
-* Turbine: Fully supported
-* zuul: Transitive
+Because Eucalyptus faithfully implements the AWS APIs upon which NetflixOSS depends, it should be noted that most 
+NetflixOSS projects can be expected to run on Eucalyptus clouds _with no changes at all_.
 
-### Detailed review
+There are, however, a handful NetflixOSS projects that must be modified in order to work with the latest version of
+Eucalyptus (3.3.1 as of submission time).  Our submission focuses on providing portability for these NetflixOSS projects, 
+as noted below.
 
-= SimianArmy =
-= asgard =
-= Turbine =
+### Netflix OSS Projects now supported under Eucalyptus with these patches
 
+* aminator: _Full support_.
+* eureka: _Full support_.
+* Priam: _Full support_.
+* servo: _Full support_.
+* Turbine: _Full support_.
+* archaius: _Partial support_. No DynamoDB support in Eucalyptus at present.  Other configurations work.
+* asgard: _Partial support_. No RDS or SQS support in Eucalyptus at present. 
+* edda: _Partial support_. No ElasticCache, RDS, Route53, or SQS support in Eucalyptus at present.
+* SimianArmy: _Partial support_. No SimpleDB support in Eucalyptus at present.
 
-= exhibitor =
-String ENDPOINT_SPEC = System.getProperty("exhibitor-s3-endpoint", "https://s3$REGION$.amazonaws.com");
-String fixedRegion = s3Region.equals("us-east-1") ? "" : ("-" + s3Region);
-String endpoint = ENDPOINT_SPEC.replace("$REGION$", fixedRegion);
-localClient.setEndpoint(endpoint);
+### Not supported at all under Eucalyptus
 
-= Priam =
-Add support for Eucalyptus endpoints
+* denominator: _Not supported_. No Route53 support in Eucalyptus at present.
+* ice: _Not supported_. No Programmatic Billing Access, SES, or SimpleDB in Eucalyptus at present.
 
-- Add facade for constructing AWS service clients w/ configured endpoints.
-- Construct clients using facade in AWSMembership, PriamConfiguration, and
-  S3FileSystem.
-- No support for SimpleDB currently -- SimpleDBConfigSource needs
-  alternative credentials.
+### Detailed review of changes
 
-= edda =
-Add support for Eucalyptus endpoints
+__aminator__
 
-- Interpret edda.region or edda.$account.region as a hostname
-  when it is not an AWS region name.
-- Use EC2 region's DNS name existing as test for AWS region existence.
-- AwsClient.setEndpoint construct Eucalyptus URLs if not an AWS region.
-- Supported: AutoScaling, CloudWatch, EC2, ELB, IAM, S3
-- Unsupported: ElastiCache, RDS, Route53, SQS
+The Eucalyptus Cloud Plugin for Aminator allows you to provision an EMI in a Eucalyptus cloud.
 
-= eureka =
-Add support for Eucalyptus endpoints
+For details, see:
+http://testingclouds.wordpress.com/2013/09/12/using-aminator-with-eucalyptus/
 
-- Use EurekaClientConfig to obtain EC2 and AutoScaling endpoints.
-- Introduce EucalyptusEurekaClientConfig for construcing euca URLs.
-- Modify AwsAsgUtil and EIPManager accordingly.
+__eureka__
 
-= servo =
-Add support for Eucalyptus endpoints
+Adds support for Eucalyptus endpoints:
+* Uses EurekaClientConfig to obtain EC2 and AutoScaling endpoints.
+* Introduces EucalyptusEurekaClientConfig for construcing euca URLs.
+* Modifies AwsAsgUtil and EIPManager accordingly.
 
-- Add facade for constructing AWS service clients w/ configured endpoints.
-- Add properties for setting AutoScaling and CloudWatch endpoints.
-  com.netflix.servo.aws.endpoint.cloudwatch
-  com.netflix.servo.aws.endpoint.autoscaling
-- Construct clients using facade in CloudWatchMetricObserver and
-  AwsInjectableTag.
+__Priam__
 
+Adds support for Eucalyptus endpoints:
+* Adds facade for constructing AWS service clients w/ configured endpoints.
+* Constructs clients using facade in AWSMembership, PriamConfiguration, and S3FileSystem.
+* No support for SimpleDB currently -- SimpleDBConfigSource needs alternative credentials.
 
-## Provide Links to Github Repo's for your Submission
+__servo__
+
+Adds support for Eucalyptus endpoints:
+* Add facade for constructing AWS service clients w/ configured endpoints.
+* Add properties for setting AutoScaling and CloudWatch endpoints.
+ * com.netflix.servo.aws.endpoint.cloudwatch
+ * com.netflix.servo.aws.endpoint.autoscaling
+* Constructs clients using facade in CloudWatchMetricObserver and AwsInjectableTag.
+
+__Turbine__
+
+Adds support for Eucalyptus endpoints:
+* Allows for turbine.region to be a Eucalyptus host address or name.
+* Tests for region-ness using DNS and checking for existence of ec2.${region}.amazonaws.com
+* Configures client endpoints appropriately in AwsUtil.java
+
+__asgard__
+
+FIXME
+
+__edda__
+
+Adds support for Eucalyptus endpoints:
+* Interprets edda.region or edda.$account.region as a hostname when it is not an AWS region name.
+* Uses EC2 region's DNS name existing as test for AWS region existence.
+* AwsClient.setEndpoint constructs Eucalyptus URLs if not an AWS region.
+* Supported: AutoScaling, CloudWatch, EC2, ELB, IAM, S3
+* Unsupported: ElastiCache, RDS, Route53, SQS
+
+__SimianArmy__
+
+Adds configuration options for Eucalyptus client properties. Example client.properties:
+* simianarmy.client.aws.accountKey = 1CSDM1FT4G8ZKDZ1AZR2
+* simianarmy.client.aws.secretKey = XXXXXXXXXXXX
+* simianarmy.client.aws.region = us-east-1
+* simianarmy.client.context.class=com.netflix.simianarmy.client.eucalyptus.EucalyptusChaosMonkeyContext
+* simianarmy.client.eucalyptus.hostName = 10.111.1.119
+* simianarmy.client.eucalyptus.accountKey = YRLWV7NSQK2FSXKCOTKET
+* simianarmy.client.eucalyptus.secretKey = XXXXXXXXXXXX
+* simianarmy.client.eucalyptus.region = us-east-1
+
+## Provide Links to Github Repos for your Submission
+
+All of the repos corresponding to these submissions have been forked into the following organization: 
+
 https://github.com/eucaflix/
