@@ -1,15 +1,20 @@
 ## Which Categories Best Fit Your Submission and Why?
-__Portability Enhancement__.  The majority of our changes to the NetflixOSS codebase involve tweaks to enable the projects
+
+__*Portability Enhancement*__.  The majority of our changes to the NetflixOSS codebase involve tweaks to enable the projects
 to run seamlessly against both AWS and Eucalyptus.  Since Eucalyptus is designed to be highly compatible with the AWS API, 
 these changes generally involve abstraction of hardcoded AWS-isms.  
 
 ## Describe your Submission
 
-Because Eucalyptus faithfully reproduces the Amazon Web Services APIs upon which NetflixOSS depends, it should be
-noted that most NetflixOSS projects can be expected to work with Eucalyptus _with no changes at all_.
+Eucalyptus is an open source software project that allows users to build private clouds that are compatible with the
+Amazon Web Services API.
 
-There are, however, a handful NetflixOSS projects that must be modified in order to work with Eucalyptus.  Our 
-submission focuses on providing portability for these projects, as noted below.
+Because Eucalyptus faithfully reproduces the AWS APIs upon which NetflixOSS depends, it should be noted that most 
+NetflixOSS projects can be expected to run on Eucalyptus clouds _with no changes at all_.
+
+There are, however, a handful NetflixOSS projects that must be modified in order to work with the latest version of
+Eucalyptus (3.3.1 as of submission time).  Oursubmission focuses on providing portability for these projects, as noted 
+below.
 
 ### Netflix OSS Projects now supported under Eucalyptus with these patches
 
