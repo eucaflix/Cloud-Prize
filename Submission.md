@@ -13,8 +13,7 @@ NetflixOSS project, we indicate the degree of Eucalyptus integration provided by
 * Priam: _Full_.
 * servo: _Full_.
 * Turbine: _Full_.
-
-* archaius: _Partial_. No DynamoDB support in Euvalyptus at present.  Other configurations work.
+* archaius: _Partial_. No DynamoDB support in Eucalyptus at present.  Other configurations work.
 * asgard: _Partial_. No RDS or SQS support in Eucalyptus at present. 
 * edda: _Partial_. No ElasticCache, RDS, Route53, or SQS support in Eucalyptus at present.
 * SimianArmy: _Partial_. No SimpleDB support in Eucalyptus at present.
