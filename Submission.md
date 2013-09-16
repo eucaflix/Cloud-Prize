@@ -18,6 +18,7 @@ as noted below.
 
 ### Netflix OSS Projects now supported under Eucalyptus with these patches
 
+* aminator: _Full support_.
 * eureka: _Full support_.
 * Priam: _Full support_.
 * servo: _Full support_.
@@ -33,6 +34,13 @@ as noted below.
 * ice: _Not supported_. No Programmatic Billing Access, SES, or SimpleDB in Eucalyptus at present.
 
 ### Detailed review of changes
+
+__aminator__
+
+The Eucalyptus Cloud Plugin for Aminator allows you to provision an EMI in a Eucalyptus cloud.
+
+For details, see:
+http://testingclouds.wordpress.com/2013/09/12/using-aminator-with-eucalyptus/
 
 __eureka__
 
