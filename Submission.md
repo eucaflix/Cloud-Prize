@@ -80,7 +80,15 @@ Adds support for Eucalyptus endpoints:
 
 __SimianArmy__
 
-FIXME
+Adds configuration options for Eucalyptus client properties. Example client.properties:
+* simianarmy.client.aws.accountKey = 1CSDM1FT4G8ZKDZ1AZR2
+* simianarmy.client.aws.secretKey = XXXXXXXXXXXX
+* simianarmy.client.aws.region = us-east-1
+* simianarmy.client.context.class=com.netflix.simianarmy.client.eucalyptus.EucalyptusChaosMonkeyContext
+* simianarmy.client.eucalyptus.hostName = 10.111.1.119
+* simianarmy.client.eucalyptus.accountKey = YRLWV7NSQK2FSXKCOTKET
+* simianarmy.client.eucalyptus.secretKey = XXXXXXXXXXXX
+* simianarmy.client.eucalyptus.region = us-east-1
 
 ## Provide Links to Github Repos for your Submission
 
