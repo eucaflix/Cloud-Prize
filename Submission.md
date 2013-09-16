@@ -1,7 +1,6 @@
 ## Which Categories Best Fit Your Submission and Why?
 __Portability Enhancement__.  The majority of our changes to the NetflixOSS codebase involve tweaks to enable the projects
-+to run seamlessly against both AWS and Eucalyptus.  Since Eucalyptus is designed to be highly compatible with the AWS
-+API, these changes generally involve abstraction of hardcoded AWS-isms.
+to run seamlessly against both AWS and Eucalyptus.  Since Eucalyptus is designed to be highly compatible with the AWS API, these changes generally involve abstraction of hardcoded AWS-isms.
 
 ## Describe your Submission
 
