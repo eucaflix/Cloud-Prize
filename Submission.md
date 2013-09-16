@@ -54,23 +54,28 @@ NetflixOSS project, we indicate the degree of Eucalyptus integration provided by
 
 ### Detailed review
 
-= SimianArmy =
-= asgard =
-= Turbine =
+__SimianArmy__
 
-= exhibitor =
+__asgard__
+
+__Turbine__
+
+__exhibitor__
+
 String ENDPOINT_SPEC = System.getProperty("exhibitor-s3-endpoint", "https://s3$REGION$.amazonaws.com");
 String fixedRegion = s3Region.equals("us-east-1") ? "" : ("-" + s3Region);
 String endpoint = ENDPOINT_SPEC.replace("$REGION$", fixedRegion);
 localClient.setEndpoint(endpoint);
 
-= Priam =
+__Priam__
+
 Adds support for Eucalyptus endpoints:
 * Adds facade for constructing AWS service clients w/ configured endpoints.
 * Constructs clients using facade in AWSMembership, PriamConfiguration, and S3FileSystem.
 * No support for SimpleDB currently -- SimpleDBConfigSource needs alternative credentials.
 
-= edda =
+__edda__
+
 Adds support for Eucalyptus endpoints:
 * Interprets edda.region or edda.$account.region as a hostname when it is not an AWS region name.
 * Uses EC2 region's DNS name existing as test for AWS region existence.
@@ -78,13 +83,15 @@ Adds support for Eucalyptus endpoints:
 * Supported: AutoScaling, CloudWatch, EC2, ELB, IAM, S3
 * Unsupported: ElastiCache, RDS, Route53, SQS
 
-= eureka =
+__eureka__
+
 Adds support for Eucalyptus endpoints:
 * Uses EurekaClientConfig to obtain EC2 and AutoScaling endpoints.
 * Introduces EucalyptusEurekaClientConfig for construcing euca URLs.
 * Modifies AwsAsgUtil and EIPManager accordingly.
 
-= servo =
+__servo__
+
 Adds support for Eucalyptus endpoints:
 * Add facade for constructing AWS service clients w/ configured endpoints.
 * Add properties for setting AutoScaling and CloudWatch endpoints.
