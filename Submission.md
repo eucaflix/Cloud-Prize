@@ -19,7 +19,6 @@ as noted below.
 ### Netflix OSS Projects now supported under Eucalyptus with these patches
 
 * eureka: _Full support_.
-* exhibitor: _Full support_.
 * Priam: _Full support_.
 * servo: _Full support_.
 * Turbine: _Full support_.
@@ -78,13 +77,6 @@ Adds support for Eucalyptus endpoints:
 * AwsClient.setEndpoint constructs Eucalyptus URLs if not an AWS region.
 * Supported: AutoScaling, CloudWatch, EC2, ELB, IAM, S3
 * Unsupported: ElastiCache, RDS, Route53, SQS
-
-__exhibitor__
-
-String ENDPOINT_SPEC = System.getProperty("exhibitor-s3-endpoint", "https://s3$REGION$.amazonaws.com");
-String fixedRegion = s3Region.equals("us-east-1") ? "" : ("-" + s3Region);
-String endpoint = ENDPOINT_SPEC.replace("$REGION$", fixedRegion);
-localClient.setEndpoint(endpoint);
 
 __SimianArmy__
 
