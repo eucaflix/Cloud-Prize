@@ -4,7 +4,7 @@ to run seamlessly against both AWS and Eucalyptus.  Since Eucalyptus is designed
 
 ## Describe your Submission
 
-Our submission touches many NetflixOSS projects.  Different projects have different degrees of integration.  For each
+Our submission touches multiple NetflixOSS projects.  Different projects have different degrees of integration.  For each
 NetflixOSS project, we indicate the degree of Eucalyptus integration provided by our submissions as follows:
 
 ### Supported Netflix OSS Projects
@@ -25,18 +25,12 @@ NetflixOSS project, we indicate the degree of Eucalyptus integration provided by
 
 ### Detailed review of changes
 
-__SimianArmy__
+__eureka__
 
-__asgard__
-
-__Turbine__
-
-__exhibitor__
-
-String ENDPOINT_SPEC = System.getProperty("exhibitor-s3-endpoint", "https://s3$REGION$.amazonaws.com");
-String fixedRegion = s3Region.equals("us-east-1") ? "" : ("-" + s3Region);
-String endpoint = ENDPOINT_SPEC.replace("$REGION$", fixedRegion);
-localClient.setEndpoint(endpoint);
+Adds support for Eucalyptus endpoints:
+* Uses EurekaClientConfig to obtain EC2 and AutoScaling endpoints.
+* Introduces EucalyptusEurekaClientConfig for construcing euca URLs.
+* Modifies AwsAsgUtil and EIPManager accordingly.
 
 __Priam__
 
@@ -44,6 +38,27 @@ Adds support for Eucalyptus endpoints:
 * Adds facade for constructing AWS service clients w/ configured endpoints.
 * Constructs clients using facade in AWSMembership, PriamConfiguration, and S3FileSystem.
 * No support for SimpleDB currently -- SimpleDBConfigSource needs alternative credentials.
+
+__servo__
+
+Adds support for Eucalyptus endpoints:
+* Add facade for constructing AWS service clients w/ configured endpoints.
+* Add properties for setting AutoScaling and CloudWatch endpoints.
+ * com.netflix.servo.aws.endpoint.cloudwatch
+ * com.netflix.servo.aws.endpoint.autoscaling
+* Constructs clients using facade in CloudWatchMetricObserver and AwsInjectableTag.
+
+__Turbine__
+
+FIXME
+
+__archaius__
+
+FIXME
+
+__asgard__
+
+FIXME
 
 __edda__
 
@@ -54,21 +69,16 @@ Adds support for Eucalyptus endpoints:
 * Supported: AutoScaling, CloudWatch, EC2, ELB, IAM, S3
 * Unsupported: ElastiCache, RDS, Route53, SQS
 
-__eureka__
+__exhibitor__
 
-Adds support for Eucalyptus endpoints:
-* Uses EurekaClientConfig to obtain EC2 and AutoScaling endpoints.
-* Introduces EucalyptusEurekaClientConfig for construcing euca URLs.
-* Modifies AwsAsgUtil and EIPManager accordingly.
+String ENDPOINT_SPEC = System.getProperty("exhibitor-s3-endpoint", "https://s3$REGION$.amazonaws.com");
+String fixedRegion = s3Region.equals("us-east-1") ? "" : ("-" + s3Region);
+String endpoint = ENDPOINT_SPEC.replace("$REGION$", fixedRegion);
+localClient.setEndpoint(endpoint);
 
-__servo__
+__SimianArmy__
 
-Adds support for Eucalyptus endpoints:
-* Add facade for constructing AWS service clients w/ configured endpoints.
-* Add properties for setting AutoScaling and CloudWatch endpoints.
- * com.netflix.servo.aws.endpoint.cloudwatch
- * com.netflix.servo.aws.endpoint.autoscaling
-* Constructs clients using facade in CloudWatchMetricObserver and AwsInjectableTag.
+FIXME
 
 ## Provide Links to Github Repos for your Submission
 
