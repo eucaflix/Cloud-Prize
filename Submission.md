@@ -13,8 +13,8 @@ Because Eucalyptus faithfully reproduces the AWS APIs upon which NetflixOSS depe
 NetflixOSS projects can be expected to run on Eucalyptus clouds _with no changes at all_.
 
 There are, however, a handful NetflixOSS projects that must be modified in order to work with the latest version of
-Eucalyptus (3.3.1 as of submission time).  Oursubmission focuses on providing portability for these projects, as noted 
-below.
+Eucalyptus (3.3.1 as of submission time).  Our submission focuses on providing portability for these NetflixOSS projects, 
+as noted below.
 
 ### Netflix OSS Projects now supported under Eucalyptus with these patches
 
