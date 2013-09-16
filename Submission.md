@@ -59,11 +59,10 @@ Adds support for Eucalyptus endpoints:
 
 __Turbine__
 
-FIXME
-
-__archaius__
-
-FIXME
+Adds support for Eucalyptus endpoints:
+* Allows for turbine.region to be a Eucalyptus host address or name.
+* Tests for region-ness using DNS and checking for existence of ec2.${region}.amazonaws.com
+* Configures client endpoints appropriately in AwsUtil.java
 
 __asgard__
 
